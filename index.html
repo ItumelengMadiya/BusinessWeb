@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Peters Business Solutions - Tax, Accounting, Payroll, and more.">
+    <title>Peters Business Solutions (Pty) Ltd</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #d32f2f;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        header .contact-info {
+            font-size: 0.9rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .banner {
+            background-image: url('banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .banner h2 {
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            background-color: #e0e0e0;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .intro h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #d32f2f;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        .services-overview {
+            padding: 50px;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        .services-overview h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #d32f2f;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service {
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+        }
+
+        .service h4 {
+            font-size: 1.5rem;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #d32f2f;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .service a:hover {
+            background-color: #b71c1c;
+        }
+
+        .about-overview {
+            background-color: #f0f0f0;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .about-overview h3 {
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        .about-overview p {
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .chat-info {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .chat-info a {
+            text-decoration: none;
+            color: white;
+            background-color: #d32f2f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .chat-info a:hover {
+            background-color: #b71c1c;
+        }
+        footer {
+    background-color: #212121;
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    justify-content: center; /* Changed from 'space-between' to 'center' */
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+footer .footer-info {
+    flex-basis: 100%; /* Ensures the footer info spans the full width */
+}
+
+footer .footer-info p {
+    margin: 5px 0;
+}
+
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: #d32f2f;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .about-overview {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Peters Business Solutions (Pty) Ltd</h1>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="banner" id="home">
+        <h2>HELP TO REDUCE YOUR TAX THE LEGAL WAY</h2>
+    </section>
+
+    <section class="intro">
+        <h3>Welcome to Peters Business Solutions</h3>
+        <p>Your trusted partner in Accounting, Payroll, and Business Registrations. We specialize in making small businesses SARS compliant.</p>
+    </section>
+
+    <section class="services-overview" id="services">
+        <h3>Our Services</h3>
+        <div class="services">
+            <div class="service">
+                <h4>Accounting & Payroll</h4>
+                <p>Comprehensive solutions for all your accounting and payroll needs.</p>
+                <a href="services.html">Learn More</a>
+            </div>
+            <div class="service">
+                <h4>Tax Consulting</h4>
+                <p>Maximize tax benefits while ensuring full compliance with SARS regulations.</p>
+                <a href="services.html">Learn More</a>
+            </div>
+            <div class="service">
+                <h4>Business Registration</h4>
+                <p>Register your business and get started with our expert services.</p>
+                <a href="services.html">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-overview">
+        <h3>About Us</h3>
+        <p>Peters Business Solutions offers top-notch services to help small businesses stay compliant and thrive. From accounting and payroll to tax consulting, we have the expertise to assist you every step of the way. 
+        <a href="about.html">Learn more about us</a>.</p>
+    </section>
+    
+
+    <section class="chat-info">
+        <a href="chat.html">Chat with Us</a>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2024 Peters Business Solutions (Pty) Ltd. All rights reserved.</p>
+            
+        </div>
+        
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+    </script>
+
+</body>
+
+</html>
