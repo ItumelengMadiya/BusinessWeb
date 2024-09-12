@@ -236,26 +236,41 @@
         .chat-info a:hover {
             background-color: #b71c1c;
         }
+
         footer {
-    background-color: #212121;
-    color: #fff;
-    padding: 30px;
-    display: flex;
-    justify-content: center; /* Changed from 'space-between' to 'center' */
-    text-align: center;
-    flex-wrap: wrap;
-}
+            background-color: #212121;
+            color: #fff;
+            padding: 30px;
+            display: flex;
+            justify-content: center; /* Changed from 'space-between' to 'center' */
+            text-align: center;
+            flex-wrap: wrap;
+        }
 
-footer .footer-info {
-    flex-basis: 100%; /* Ensures the footer info spans the full width */
-}
+        footer .footer-info {
+            flex-basis: 100%; /* Ensures the footer info spans the full width */
+        }
 
-footer .footer-info p {
-    margin: 5px 0;
-}
-
+        footer .footer-info p {
+            margin: 5px 0;
+        }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -265,6 +280,7 @@ footer .footer-info p {
                 right: 0;
                 width: 100%;
                 text-align: center;
+                z-index: 10;
             }
 
             nav ul.show {
@@ -292,14 +308,65 @@ footer .footer-info p {
             .about-overview {
                 padding: 30px;
             }
+
+            .search-bar {
+                margin-top: 20px;
+            }
+
+            .search-bar input[type="text"] {
+                width: calc(100% - 60px);
+                margin-right: 10px;
+            }
+
+            .search-bar button {
+                width: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .banner h2 {
+                font-size: 1.5rem;
+            }
+
+            .intro h3 {
+                font-size: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .services-overview h3 {
+                font-size: 1.5rem;
+            }
+
+            .service h4 {
+                font-size: 1.2rem;
+            }
+
+            .service p {
+                font-size: 0.9rem;
+            }
+
+            .about-overview h3 {
+                font-size: 1.5rem;
+            }
+
+            .about-overview p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <header>
         <div class="logo">
+            <img src="Logo.jpg" alt="Company Logo" style="max-width: 150px;">
             <h1>Peters Business Solutions (Pty) Ltd</h1>
         </div>
         <div class="menu-toggle" id="menu-toggle">
@@ -356,7 +423,6 @@ footer .footer-info p {
         <p>Peters Business Solutions offers top-notch services to help small businesses stay compliant and thrive. From accounting and payroll to tax consulting, we have the expertise to assist you every step of the way. 
         <a href="about.html">Learn more about us</a>.</p>
     </section>
-    
 
     <section class="chat-info">
         <a href="chat.html">Chat with Us</a>
@@ -365,9 +431,7 @@ footer .footer-info p {
     <footer>
         <div class="footer-info">
             <p>&copy; 2024 Peters Business Solutions (Pty) Ltd. All rights reserved.</p>
-            
         </div>
-        
     </footer>
 
     <script>
@@ -382,3 +446,4 @@ footer .footer-info p {
 </body>
 
 </html>
+
