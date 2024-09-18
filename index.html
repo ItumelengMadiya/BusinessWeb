@@ -360,6 +360,90 @@
                 font-size: 0.9rem;
             }
         }
+        .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none; /* Hide slides by default */
+}
+
+.banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1; /* Ensure the image is behind the text */
+}
+
+.banner .text {
+    position: relative;
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background for better text visibility */
+    border-radius: 10px;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+    .banner .text {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner .text {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+}
+
+
     </style>
 </head>
 
@@ -367,7 +451,7 @@
     <header>
         <div class="logo">
             <img src="Logo.jpg" alt="Company Logo" style="max-width: 150px;">
-            <h1>Peters Business Solutions </h1>
+            <h1>Peters Business Solutions</h1>
         </div>
         <div class="menu-toggle" id="menu-toggle">
             <span></span>
@@ -388,9 +472,30 @@
         </nav>
     </header>
 
-    <section class="banner" id="home">
-        <h2>HELP TO REDUCE YOUR TAX THE LEGAL WAY</h2>
+    <section class="slideshow-container" id="home">
+        <div class="slide fade">
+            <div class="banner">
+                <img src="2s.jpg" alt="Banner 1">
+                <div class="text">HELP TO REDUCE YOUR TAX THE LEGAL WAY</div>
+            </div>
+        </div>
+        <div class="slide fade">
+            <div class="banner">
+                <img src="consult.jpeg" alt="Banner 2">
+                <div class="text">EXPERT ACCOUNTING SERVICES FOR YOUR BUSINESS</div>
+            </div>
+        </div>
+        <div class="slide fade">
+            <div class="banner">
+                <img src="tax.jpg" alt="Banner 3">
+                <div class="text">PROFESSIONAL TAX CONSULTING SOLUTIONS</div>
+            </div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </section>
+    
+    
 
     <section class="intro">
         <h3>Welcome to Peters Business Solutions</h3>
@@ -441,9 +546,28 @@
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('show');
         });
+        let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Hide all slides
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; } // Reset index if out of range
+    if (slideIndex < 1) { slideIndex = slides.length; } // Handle negative index
+    slides[slideIndex - 1].style.display = "block"; // Show the current slide
+    setTimeout(showSlides, 5000); // Change slide every 5 seconds
+}
+
+
     </script>
 
 </body>
 
 </html>
-
