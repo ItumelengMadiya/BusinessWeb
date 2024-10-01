@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +17,23 @@
             flex-direction: column;
             min-height: 100vh;
         }
+        .logo {
+    text-align: center; /* Center the logo and text */
+}
 
-        header {
+.logo img {
+    width: 200px; /* Set the desired width for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.logo h1 {
+    font-size: 16px; /* Font size for the text */
+    margin-top: 3px; /* Space between logo and text */
+    color: #333333; /* Dark gray text color for a professional look */
+}
+
+
+header {
             background-color: #d32f2f;
             padding: 20px;
             display: flex;
@@ -30,33 +44,18 @@
         }
 
         header h1 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin: 0;
+        }
+
+        header .contact-info {
+            font-size: 0.9rem;
         }
 
         nav {
             display: flex;
             align-items: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
             gap: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        nav ul li a:hover {
-            background-color: #333;
-            color: white;
         }
 
         .menu-toggle {
@@ -72,43 +71,47 @@
             background-color: white;
         }
 
-        .search-bar {
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 20px;
         }
 
-        .search-bar input[type="text"] {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            outline: none;
-            width: 200px;
+        nav ul li {
+            display: inline;
         }
 
-        .search-bar button {
-            padding: 8px 12px;
-            background-color: #fff;
-            color: #d32f2f;
-            border: 1px solid #d32f2f;
-            border-radius: 4px;
-            cursor: pointer;
+        nav ul li a {
+            color: white;
+            text-decoration: none;
             font-weight: bold;
+            padding: 5px 10px;
         }
 
-        .search-bar button:hover {
-            background-color: #d32f2f;
+        nav ul li a:hover {
+            background-color: #333;
             color: #fff;
         }
 
-        .nav-menu {
+        .search-bar {
             display: flex;
-            gap: 20px;
             align-items: center;
         }
 
-        .nav-menu.show {
-            display: flex; /* Show the menu when toggled */
+        .search-bar input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         /* Chat Section Styling */
@@ -251,27 +254,7 @@
                 padding: 10px;
             }
 
-            .chat-container {
-                padding: 20px;
-                max-width: 90%;
-                border-radius: 30px; /* More rounded for mobile */
-            }
-
-            .chat-box {
-                max-height: 300px;
-            }
-
-            .chat-input {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .chat-input input[type="text"] {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .chat-input button {
+            .search-bar button {
                 width: 100%;
                 padding: 10px;
                 font-size: 1rem;
@@ -279,11 +262,10 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="logo">
-            <img src="Logo.jpg" alt="Company Logo" style="max-width: 150px;">
+            <img src="Logo-removebg-preview.png" alt="Company Logo">
             <h1>Peters Business Solutions</h1>
         </div>
         <button id="menu-toggle" class="menu-toggle">
@@ -299,8 +281,10 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="search-bar">
-                <input type="text" id="search-bar" placeholder="Search...">
-                <button id="search-button">Search</button>
+                <input type="text" id="searchQuery" placeholder="Search...">
+                <button onclick="performSearch()">
+                    <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+                </button>
             </div>
         </nav>
     </header>
@@ -310,7 +294,6 @@
         <div class="chat-container">
             <div class="chat-box" id="chat-box">
                 <div class="bot-message">Hello! How can I assist you today?</div>
-                <div class="bot-message">What would you like to know or need help with?</div>
             </div>
             <div class="chat-input">
                 <input type="text" id="chat-message" placeholder="Type your message...">
@@ -320,48 +303,115 @@
     </section>
 
     <footer>
-        <p>© 2024 Peters Business Solutions. All rights reserved.</p>
+        <p>&copy; Designed by <a href="https://www.spacebarsolutions.co.za/" target="_blank" style="color: rgb(196, 88, 88); text-decoration: wavy;">Spacebar Solutions</a>.</p>
+
     </footer>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
-
         const sendMessageButton = document.getElementById('send-message');
         const chatBox = document.getElementById('chat-box');
         const chatMessageInput = document.getElementById('chat-message');
         const searchButton = document.getElementById('search-button');
         const searchBar = document.getElementById('search-bar');
 
-        // Handle sending messages
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
         sendMessageButton.addEventListener('click', () => {
-            const message = chatMessageInput.value.trim();
-            if (message) {
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.className = 'user-message';
-                userMessageDiv.textContent = message;
-                chatBox.appendChild(userMessageDiv);
+            const userMessage = chatMessageInput.value.trim();
+            if (userMessage) {
+                addUserMessage(userMessage);
                 chatMessageInput.value = '';
-                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+
+                // Respond based on the user message
+                setTimeout(() => {
+                    respondToUserMessage(userMessage);
+                }, 500);
             }
         });
 
-        // Handle search functionality
+        function addUserMessage(message) {
+            const userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('user-message');
+            userMessageElement.textContent = message;
+            chatBox.appendChild(userMessageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function respondToUserMessage(message) {
+            let response = '';
+            message = message.toLowerCase();
+
+            if (message.includes('services')) {
+                response = `At Peters Business Solutions, we offer the following services:
+- Accounting and Payroll Services
+- Tax Services – Business and Individual
+- UIF Applications for companies and individuals
+- Company Registration - CIPC
+- SARS Registration
+- COIDA Registration
+- CIDB Registration
+- CSD Registration
+- Secretarial Services
+
+We strive for perfection and believe in doing it right the first time. How can we assist you further?`;
+            } else if (message.includes('mission')) {
+                response = 'Our mission at Peters Business Solutions is to provide exceptional services that drive business success and foster growth by delivering tailored solutions and unparalleled support. We are committed to helping our clients achieve their goals.';
+            } else if (message.includes('hello') || message.includes('hi')) {
+                response = 'Hello! How can I assist you today?';
+            } else {
+                response = 'I am sorry, I did not understand your query. Could you please ask about our services or mission, or let me know how else I can assist you?';
+            }
+
+            const botMessageElement = document.createElement('div');
+            botMessageElement.classList.add('bot-message');
+            botMessageElement.textContent = response;
+            chatBox.appendChild(botMessageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
         searchButton.addEventListener('click', () => {
             const query = searchBar.value.trim();
             if (query) {
-                alert('Search functionality is not yet implemented.');
-                // Redirect to a search results page or handle search here
+                // Simulate search functionality
+                alert('You searched for: ' + query);
+                searchBar.value = '';
             }
         });
+        function performSearch() {
+        const query = document.getElementById('searchQuery').value.toLowerCase();
+        let pageUrl;
+
+        switch (query) {
+            case 'index':
+                pageUrl = 'index.html'; // Link to your actual index page
+                break;
+            case 'about':
+                pageUrl = 'about.html'; // Link to your actual about page
+                break;
+            case 'contact':
+                pageUrl = 'contact.html'; // Link to your actual contact page
+                break;
+            case 'chat':
+                pageUrl = 'chat.html'; // Link to your actual chat page
+                break;
+            case 'services':
+                pageUrl = 'services.html'; // Link to your actual services page
+                break;
+            default:
+                alert('Page not found. Please try again.');
+                return;
+        }
+
+        window.location.href = pageUrl;
+    }
     </script>
 </body>
-
 </html>
+
 
 
 

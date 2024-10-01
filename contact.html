@@ -7,6 +7,7 @@
     <meta name="description" content="Contact Peters Business Solutions">
     <title>Contact Us | Peters Business Solutions</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styling */
         body {
@@ -19,15 +20,29 @@
             flex-direction: column;
             min-height: 100vh;
         }
+        .logo {
+    text-align: center; /* Center the logo and text */
+}
 
-        header {
+.logo img {
+    width: 200px; /* Set the desired width for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.logo h1 {
+    font-size: 16px; /* Font size for the text */
+    margin-top: 3px; /* Space between logo and text */
+    color: #333333; /* Dark gray text color for a professional look */
+    font-family: 'Lora', serif;
+}
+
+header {
             background-color: #d32f2f;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
-            position: relative;
             flex-wrap: wrap;
         }
 
@@ -36,57 +51,14 @@
             margin: 0;
         }
 
+        header .contact-info {
+            font-size: 0.9rem;
+        }
+
         nav {
             display: flex;
             align-items: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
             gap: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        nav ul li a:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-container input[type="text"] {
-            padding: 5px;
-            border-radius: 4px;
-            border: none;
-            outline: none;
-            margin-right: 10px;
-            padding: 10px;
-            font-size: 1rem;
-        }
-
-        .search-container button {
-            padding: 10px 15px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .search-container button:hover {
-            background-color: #555;
         }
 
         .menu-toggle {
@@ -102,13 +74,47 @@
             background-color: white;
         }
 
-        .nav-menu {
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
             display: flex;
             gap: 20px;
         }
 
-        .nav-menu.show {
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .search-bar {
             display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .search-bar button {
+            padding: 5px 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         .contact {
@@ -131,12 +137,19 @@
         }
 
         .form-container {
-            background-color: #fff;
+            background-color: #f9f9f9;
             padding: 30px;
             border-radius: 8px;
             max-width: 600px;
             margin: 0 auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
         }
 
         .form-container input[type="text"],
@@ -147,6 +160,11 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .form-container textarea {
+            resize: none; /* Disable resizing for the textarea */
         }
 
         .form-container button {
@@ -156,6 +174,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .form-container button:hover {
@@ -184,6 +203,24 @@
             margin: 5px 0;
         }
 
+        .linkedin-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+
+        .linkedin-link a {
+            color: #0077b5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .linkedin-link a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             background-color: #212121;
             color: #fff;
@@ -194,6 +231,16 @@
 
         footer p {
             margin: 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -259,7 +306,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="Logo.jpg" alt="Company Logo" style="max-width: 150px;">
+            <img src="Logo-removebg-preview.png" alt="Company Logo">
             <h1>Peters Business Solutions</h1>
         </div>
         <button id="menu-toggle" class="menu-toggle">
@@ -274,43 +321,57 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="search-container">
-                <input type="text" placeholder="Search..." />
-                <button type="submit">Search</button>
+            <div class="search-bar">
+                <input type="text" id="searchQuery" placeholder="Search...">
+                <button onclick="performSearch()">
+                    <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+                </button>
             </div>
         </nav>
     </header>
 
     <section class="contact" id="contact">
         <h2>Contact Us</h2>
-        <p>We’d love to hear from you! Whether you have a question about services, pricing, or anything else, feel free to get in touch with us.</p>
+        <p>We’d love to hear from you! Whether you have a question or want to discuss a project, reach out to us.</p>
 
         <div class="form-container">
-            <form action="/submit_contact_form" method="POST">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your full name..." required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email..." required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
-
+            <form id="contactForm" action="submit-form" method="POST">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            
                 <button type="submit">Send Message</button>
             </form>
+            
         </div>
 
         <!-- Company Contact Details -->
         <div class="company-contacts">
             <h3>Contact Information</h3>
-            <p><strong>Phone:</strong> +27 73 983 3921</p>
-            <p><strong>Email:</strong> admin@petersbusiness.co.za</p>
-            <p><strong>Address:</strong> 17 Mercury Street, Ennerdale Ext 1, 1830, South Africa</p>
+            <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +27 73 983 3921</p>
+            <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> <a href="mailto:admin@petersbusinesssolutions.co.za">admin@petersbusinesssolutions.co.za</a></p>
+            <p>
+                <i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> 
+                <a href="https://www.google.com/maps/search/?api=1&query=17+Mercury+Street%2C+Ennerdale+Ext+1%2C+1830%2C+South+Africa" target="_blank">17 Mercury Street, Ennerdale Ext 1, 1830, South Africa</a>
+            </p>
         </div>
+        
+
+        <div class="linkedin-link">
+            <p>Connect with us on <i class="fa-brands fa-linkedin"></i> <a href="https://za.linkedin.com/company/peters-business-solutions" target="_blank">LinkedIn</a></p>
+        </div>
+        
     </section>
 
     <footer>
-        <p>© 2024 Peters Business Solutions. All rights reserved.</p>
+        <p>&copy; Designed by <a href="https://www.spacebarsolutions.co.za/" target="_blank" style="color: rgb(196, 88, 88); text-decoration: wavy;">Spacebar Solutions</a>.</p>
+
+        
     </footer>
 
     <script>
@@ -320,8 +381,34 @@
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show');
         });
+        function performSearch() {
+        const query = document.getElementById('searchQuery').value.toLowerCase();
+        let pageUrl;
+
+        switch (query) {
+            case 'index':
+                pageUrl = 'index.html'; // Link to your actual index page
+                break;
+            case 'about':
+                pageUrl = 'about.html'; // Link to your actual about page
+                break;
+            case 'contact':
+                pageUrl = 'contact.html'; // Link to your actual contact page
+                break;
+            case 'chat':
+                pageUrl = 'chat.html'; // Link to your actual chat page
+                break;
+            case 'services':
+                pageUrl = 'services.html'; // Link to your actual services page
+                break;
+            default:
+                alert('Page not found. Please try again.');
+                return;
+        }
+
+        window.location.href = pageUrl;
+    }
     </script>
 </body>
 
 </html>
-
