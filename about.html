@@ -28,98 +28,182 @@
 }
 
 .logo img {
-    width: 200px; /* Set the desired width for the logo */
+    width: 130px; /* Set the desired width for the logo */
     height: auto; /* Maintain aspect ratio */
 }
 
-.logo h1 {
-    font-size: 16px; /* Font size for the text */
-    margin-top: 3px; /* Space between logo and text */
-    color: #333333; /* Dark gray text color for a professional look */
-    
+header {
+    background-color: #d32f2f;
+    padding: 5px 15px; /* Adjusted padding to maintain a compact height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.2rem; /* Adjust font size as needed */
+    margin: 0;
+}
+
+header .contact-info {
+    font-size: 0.8rem; /* Decrease font size for contact info */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px; /* Adjusted padding to make links more compact */
+    font-size: 0.9rem; /* Adjust font size for navigation links */
+}
+
+nav ul li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 2px; /* Reduced padding for the input */
+    border-radius: 3px; /* Slightly smaller border radius */
+    border: 1px solid #ccc; /* Optional: Add a subtle border for visibility */
+    font-size: 0.7rem; /* Decrease font size for a smaller appearance */
+    height: 25px; /* Set a specific height for the input */
+    width: 120px; /* Set a specific width for the input */
+}
+
+.search-bar button {
+    padding: 2px 5px; /* Reduced padding for button */
+    background-color: #fff;
+    border: 1px solid #ccc; /* Optional: Add a subtle border for visibility */
+    border-radius: 3px; /* Match border radius with the input */
+    cursor: pointer;
+    font-size: 0.7rem; /* Match font size with the input */
+    height: 25px; /* Set a specific height for the button */
+    margin-left: 5px; /* Space between the input and button */
+}
+.stats-section {
+    background-color: #f0f0f0; /* Light gray background for consistency with About Page */
+    padding: 0; /* Remove all padding */
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-top: 30px; /* Space above the section */
+}
+
+.stats-section h2 {
+    font-size: 2.5rem; /* Larger font size for the heading */
+    color: #d32f2f; /* Matching brand color */
+    margin-bottom: 20px; /* Space below the heading */
+    text-transform: uppercase; /* Make the title bold and prominent */
+}
+
+#stats {
+    display: flex;
+    justify-content: space-around; /* Even spacing between items */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.stat-item {
+    flex: 1; /* Each item takes equal space */
+    min-width: 200px; /* Minimum width for smaller screens */
+    text-align: center; /* Center text */
+    margin: 20px; /* Space between items */
+    transition: transform 0.3s; /* Smooth transform transition */
+}
+
+.stat-circle {
+    width: 100px; /* Fixed size for the circle */
+    height: 100px; /* Fixed size for the circle */
+    border-radius: 50%; /* Circular shape */
+    background-color:lightblue; /* Yellow background for the circle */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin: 0 auto 10px; /* Center horizontally and add spacing below */
+    position: relative; /* Position for flipping effect */
+    perspective: 1000px; /* Perspective for 3D flipping */
+}
+
+.stat-number,
+.stat-number-back {
+    font-size: 2.5rem; /* Larger font size for numbers */
+    color: #333; /* Dark color for text inside circle */
+    backface-visibility: hidden; /* Hide the backface */
+    position: absolute; /* Position absolutely for flipping */
+    width: 100%;
+    height: 100%;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.stat-number-back {
+    background-color: #d32f2f; /* Background color for the back */
+    color: white; /* Text color for the back */
+    transform: rotateY(180deg); /* Rotate the back face */
+}
+
+.stat-circle:hover .stat-number {
+    transform: rotateY(180deg); /* Flip front on hover */
+}
+
+.stat-circle:hover .stat-number-back {
+    transform: rotateY(0deg); /* Show back on hover */
 }
 
 
-header {
-            background-color: #d32f2f;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            flex-wrap: wrap;
-        }
+/* Additional styling for responsive design */
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 0; /* Ensure no padding on smaller screens */
+    }
 
-        header h1 {
-            font-size: 2rem;
-            margin: 0;
-        }
+    .stat-item {
+        margin: 10px; /* Less margin on smaller screens */
+    }
+}
 
-        header .contact-info {
-            font-size: 0.9rem;
-        }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-        }
-
-        nav ul li a:hover {
-            background-color: #333;
-            color: #fff;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar input[type="text"] {
-            padding: 5px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .search-bar button {
-            padding: 5px 10px;
-            background-color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
 
         .about {
             background-color: #e0e0e0;
@@ -329,8 +413,8 @@ header {
 <body>
     <header>
         <div class="logo">
-            <img src="Logo-removebg-preview.png" alt="Company Logo">
-            <h1>Peters Business Solutions</h1>
+            <img src="images/Logo.png" alt="Company Logo">
+            
         </div>
         <button id="menu-toggle" class="menu-toggle">
             <span></span>
@@ -356,7 +440,7 @@ header {
     
         <!-- Banner Image with Zoom Effect -->
         <div class="banner">
-            <div class="banner-image" style="background-image: url('abt.jpg');"></div>
+            <div class="banner-image" style="background-image: url('images/abt.jpg');"></div>
             <div class="banner-text">About Us</div>
         </div>
         <section class="about" id="about">  
@@ -367,6 +451,8 @@ header {
                 In September 2016, she started working as an Accountant for a company, but it closed down after three months.
                 Mrs. Peters then decided to pursue her passion for Accounting, and she established Peters Business Solutions in 2017.
             </p>
+            
+            
             
 
         <div class="info-container">
@@ -393,12 +479,43 @@ header {
                 
             </div>
         </div>
+        
 
         <!-- Download Company's Profile -->
-        <a href="Company Profile (1).docx" class="download-btn" download>
+        <a href="images/Company Profile (1).docx" class="download-btn" download>
             <i class="fas fa-file-download"></i> Download Company Profile
         </a>
     </section>
+    <section class="stats-section">
+        <h2>Our Impact</h2>
+        <div id="stats">
+            <div class="stat-item">
+                <div class="stat-circle">
+                    <span class="stat-number" id="years">0</span>
+                    <span class="stat-number-back">6</span> <!-- Back number for experience -->
+                </div>
+                <p>Years of Experience</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">
+                    <span class="stat-number" id="clients">0</span>
+                    <span class="stat-number-back">+30</span> <!-- Back number for clients with plus sign -->
+                </div>
+                <p>Clients Served</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">
+                    <span class="stat-number" id="companies">0</span>
+                    <span class="stat-number-back">+40</span> <!-- Back number for companies with plus sign -->
+                </div>
+                <p>Companies Registered</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
 
     <footer>
         <p>&copy; Designed by <a href="https://www.spacebarsolutions.co.za/" target="_blank" style="color: rgb(196, 88, 88); text-decoration: wavy;">Spacebar Solutions</a>.</p>
@@ -437,6 +554,35 @@ header {
 
             window.location.href = pageUrl;
         }
+       // Initial values for stats
+    var experienceYears = 6;          // Years of experience
+    var additionalClients = 30;       // Clients served
+    var additionalCompanies = 40;     // Companies registered
+
+    // Increment function
+    function incrementStat(id, targetValue, prefix = "") {
+        let count = 0;
+        let increment = Math.ceil(targetValue / 100); // Adjust increment size for smooth counting
+
+        var counter = setInterval(function() {
+            count += increment;
+            if (count >= targetValue) {
+                count = targetValue; // Stop when reaching target value
+                clearInterval(counter);
+            }
+
+            // Update both the front and back numbers
+            document.getElementById(id).innerText = prefix + count.toLocaleString();
+            document.querySelector(`.${id}-back`).innerText = prefix + count.toLocaleString(); // Update back side
+        }, 50); // Adjust the speed of the increment
+    }
+
+    // Start incrementing stats on page load
+    window.onload = function() {
+        incrementStat("years", experienceYears);         // Years of experience
+        incrementStat("clients", additionalClients, "+"); // Clients served with a plus sign
+        incrementStat("companies", additionalCompanies, "+"); // Companies registered with a plus sign
+    };
     </script>
 </body>
 

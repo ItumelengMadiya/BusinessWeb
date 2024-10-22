@@ -10,92 +10,55 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
             color: #333;
         }
-        .logo {
-    text-align: center; /* Center the logo and text */
-}
 
-.logo img {
-    width: 200px; /* Set the desired width for the logo */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.logo h1 {
-    font-size: 16px; /* Font size for the text */
-    margin-top: 3px; /* Space between logo and text */
-    color: #333333; /* Dark gray text color for a professional look */
-}
-
-
-
-
-
-
+        /* Header and Menu Styling */
         header {
             background-color: #d32f2f;
-            padding: 20px;
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
-            flex-wrap: wrap;
+            padding: 5px 15px;
+            z-index: 1000; /* Ensures header is always above slideshow */
+            position: relative;
         }
 
-        header h1 {
-            font-size: 2rem;
-            margin: 0;
+        .logo img {
+            width: 130px;
+            height: auto;
         }
 
-        header .contact-info {
-            font-size: 0.9rem;
-        }
-
-        nav {
+        /* Desktop Navigation and Search Bar */
+        .desktop-nav {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-        }
-
-        nav ul {
-            list-style-type: none;
+        .desktop-nav ul {
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             gap: 20px;
         }
 
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li a {
+        .desktop-nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
+            font-size: 1.2rem;
+            padding: 10px;
         }
 
-        nav ul li a:hover {
-            background-color: #333;
-            color: #fff;
+        .desktop-nav ul li a:hover {
+            background-color: #b71c1c;
+            border-radius: 5px;
         }
 
         .search-bar {
@@ -104,41 +67,104 @@
         }
 
         .search-bar input[type="text"] {
-            padding: 5px;
-            border-radius: 5px;
-            border: none;
+            padding: 8px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            width: 150px;
         }
 
         .search-bar button {
-            padding: 5px 10px;
-            background-color: #fff;
-            border: none;
-            border-radius: 5px;
+            margin-left: 10px;
+            padding: 8px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
             cursor: pointer;
         }
 
+        .search-bar button i {
+            color: #d32f2f;
+        }
+
+        /* Side Menu (for mobile) */
+        .nav-menu {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #d32f2f;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 60px;
+            z-index: 1000; /* Ensures menu is always above other content */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu ul li {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #b71c1c;
+        }
+
+        .nav-menu.show {
+            left: 0;
+        }
+
+        /* Menu toggle button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+        }
+
+        /* Slideshow banner styling */
         .banner {
             position: relative;
             background-size: cover;
             background-position: center;
-            height: 600px; /* Increased height for better visibility */
+            height: 600px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
             overflow: hidden;
+            z-index: 1; /* Ensure slideshow is below the menu */
         }
 
         .banner img {
             width: 100%;
             height: auto;
             object-fit: cover;
-            image-rendering: crisp-edges; /* Ensures the image is rendered sharply */
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1; /* Ensure the image is behind the text */
+            z-index: -1;
         }
 
         .banner .text {
@@ -151,6 +177,30 @@
             border-radius: 10px;
         }
 
+        /* Mobile-specific adjustments for the banner and text */
+        @media (max-width: 768px) {
+            .banner {
+                height: 400px;
+            }
+
+            .banner .text {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                height: 300px;
+            }
+
+            .banner .text {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
+        }
+
+        /* Intro section */
         .intro {
             background-color: #e0e0e0;
             padding: 50px;
@@ -170,6 +220,7 @@
             max-width: 700px;
         }
 
+        /* Services section */
         .services-overview {
             padding: 50px;
             text-align: center;
@@ -227,6 +278,7 @@
             background-color: #b71c1c;
         }
 
+        /* About overview */
         .about-overview {
             background-color: #f0f0f0;
             padding: 50px;
@@ -243,10 +295,10 @@
             margin: 0 auto 20px;
         }
 
+        /* Centering the Chat Section */
         .chat-info {
             text-align: center;
             padding: 20px;
-            margin-top: 30px;
         }
 
         .chat-info a {
@@ -257,12 +309,15 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s ease-in-out;
+            display: inline-block; /* Ensures centering */
+            margin: 20px auto; /* Centers the button */
         }
 
         .chat-info a:hover {
             background-color: #b71c1c;
         }
 
+        /* Footer */
         footer {
             background-color: #212121;
             color: #fff;
@@ -281,44 +336,21 @@
             margin: 5px 0;
         }
 
+        /* Mobile-specific adjustments */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            header h1 {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-            }
-
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul {
+            /* Hide desktop nav on mobile */
+            .desktop-nav {
                 display: none;
-                flex-direction: column;
-                background-color: #d32f2f;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                width: 100%;
-                text-align: center;
-                z-index: 10;
             }
 
-            nav ul.show {
-                display: flex;
-            }
-
+            /* Show menu toggle button on mobile */
             .menu-toggle {
                 display: flex;
             }
 
-            .banner h2 {
-                font-size: 1.8rem;
+            /* Full-width search input */
+            .search-bar input[type="text"] {
+                width: 90%;
             }
 
             .services {
@@ -334,30 +366,9 @@
             .about-overview {
                 padding: 30px;
             }
-
-            .search-bar {
-                margin-top: 20px;
-            }
-
-            .search-bar input[type="text"] {
-                width: calc(100% - 60px);
-                margin-right: 10px;
-            }
-
-            .search-bar button {
-                width: 50px;
-            }
         }
 
         @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.2rem;
-            }
-
-            .banner .text {
-                font-size: 1.5rem;
-            }
-
             .intro h3 {
                 font-size: 1.5rem;
             }
@@ -386,168 +397,124 @@
                 font-size: 0.9rem;
             }
         }
-
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .slide {
-            display: none;
-        }
-
-        .banner img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            image-rendering: crisp-edges;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        .banner .text {
-            position: relative;
-            z-index: 1;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .banner .text {
-                font-size: 1.5rem;
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .banner .text {
-                font-size: 1.2rem;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="Logo-removebg-preview.png" alt="Company Logo">
-            <h1>Peters Business Solutions</h1>
+            <img src="images/Logo.png" alt="Company Logo">
         </div>
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul id="menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="search-bar">
                 <input type="text" id="searchQuery" placeholder="Search...">
                 <button onclick="performSearch()">
-                    <i class="fas fa-search"></i> <!-- Font Awesome Search Icon -->
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
         </nav>
+        <button id="menu-toggle" class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
+    <!-- Side Menu for Mobile -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" id="searchQueryMobile" placeholder="Search...">
+            <button onclick="performSearch()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Slideshow Banner -->
     <section class="slideshow-container" id="home">
         <div class="slide fade">
             <div class="banner">
-                <img src="img.jpg" alt="Banner 1">
+                <img src="images/img.jpg" alt="Banner 1">
                 <div class="text">HELP TO REDUCE YOUR TAX THE LEGAL WAY</div>
             </div>
         </div>
         <div class="slide fade">
             <div class="banner">
-                <img src="tax.jpg" alt="Banner 2">
+                <img src="images/tax.jpg" alt="Banner 2">
                 <div class="text">EXPERT ACCOUNTING SERVICES FOR YOUR BUSINESS</div>
             </div>
         </div>
         <div class="slide fade">
             <div class="banner">
-                <img src="pexels-photo-3183186.webp" alt="Banner 3">
+                <img src="images/pexels-photo-3183186.webp" alt="Banner 3">
                 <div class="text">PROFESSIONAL TAX CONSULTING SOLUTIONS</div>
             </div>
         </div>
     </section>
 
+    <!-- Intro Section -->
     <section class="intro">
         <h3>Welcome to Peters Business Solutions</h3>
         <p>Your trusted partner in Accounting, Payroll, and Business Registrations. We specialize in making small businesses SARS compliant.</p>
     </section>
 
+    <!-- Services Section -->
     <section class="services-overview" id="services">
         <h3>Our Services</h3>
         <div class="services">
             <div class="service">
                 <h4><i class="fas fa-calculator"></i> Accounting & Payroll</h4>
                 <p>Comprehensive solutions for all your accounting and payroll needs.</p>
-                <a href="services.html">Learn More</a>
             </div>
             <div class="service">
                 <h4><i class="fas fa-file-invoice-dollar"></i> Tax Consulting</h4>
                 <p>Maximize tax benefits while ensuring full compliance with SARS regulations.</p>
-                <a href="services.html">Learn More</a>
             </div>
             <div class="service">
                 <h4><i class="fas fa-briefcase"></i> Business Registration</h4>
                 <p>Register your business and get started with our expert services.</p>
-                <a href="services.html">Learn More</a>
             </div>
         </div>
     </section>
 
+    <!-- About Overview Section -->
     <section class="about-overview">
         <h3>About Us</h3>
         <p>Peters Business Solutions offers top-notch services to help small businesses stay compliant and thrive. From accounting and payroll to tax consulting, we have the expertise to assist you every step of the way. 
         <a href="about.html">Learn more about us</a>.</p>
     </section>
 
+    <!-- Chat Section -->
     <section class="chat-info">
         <a href="chat.html"><i class="fas fa-comments"></i> Chat with Us</a>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-info">
-            <p>&copy; Designed by <a href="https://www.spacebarsolutions.co.za/" target="_blank" style="color: rgb(196, 88, 88); text-decoration: wavy;">Spacebar Solutions</a>.</p>  
-
+            <p>&copy; Designed by <a href="https://www.spacebarsolutions.co.za/" target="_blank" style="color: rgb(196, 88, 88); text-decoration: wavy;">Spacebar Solutions</a>.</p>
         </div>
     </footer>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
+        const menu = document.querySelector('.nav-menu');
 
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('show');
         });
-
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 4000); // Change slide every 4 seconds
-        }
 
         function performSearch() {
             const query = document.getElementById('searchQuery').value.toLowerCase();
@@ -563,9 +530,6 @@
                 case 'contact':
                     pageUrl = 'contact.html';
                     break;
-                case 'chat':
-                    pageUrl = 'chat.html';
-                    break;
                 case 'services':
                     pageUrl = 'services.html';
                     break;
@@ -576,7 +540,25 @@
 
             window.location.href = pageUrl;
         }
+
+        // Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 4000); // Change slide every 4 seconds
+        }
     </script>
 </body>
 
 </html>
+
